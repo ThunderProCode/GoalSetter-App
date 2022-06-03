@@ -1,11 +1,15 @@
+const path = require('path');
+
 module.exports = {
-    resolve: {
-        extensions: [".tsx", ".ts", ".js"],
+    entry: "./src/index.tsx",
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js',
+        publicPath: '/'
     },
     mode: "development",
-    entry: "./src/index.tsx",
-    devServer: {
-        static: "./public",
+    resolve: {
+        extensions: [".tsx", ".ts", ".js"],
     },
     module: {
         rules: [
@@ -23,5 +27,11 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    devServer: {
+        static: "./public",
+        compress: true,
+        historyApiFallback: true,
+        port: 8080,
+    },
 }
