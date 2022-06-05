@@ -10,15 +10,15 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 
 //Styles
-import { GlobalStyles } from './styles/GlobalStyles.ts';
-import { Container } from './styles/AppStyle.ts';
+import { GlobalStyles } from './styles/GlobalStyles';
+import { Container } from './styles/AppStyle';
 
 const App = () => (
     <>
         <GlobalStyles/>
         <BrowserRouter>
-            <PageHeader />
             <Container>
+                <PageHeader />
                 <Routes>
                     <Route path="/" element={ <Dashboard/> } />
                     <Route path="/login" element={ <Login/> } />

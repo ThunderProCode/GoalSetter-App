@@ -1,12 +1,6 @@
 import React from 'react';
-import { 
-    Header,
-    Logo,
-    Ul,
-    StyledLink,
-    SignInIcon,
-    UserIcon,
-} from './PageHeaderStyles';
+import { Header,Logo,Ul,StyledLink,} from './PageHeaderStyles';
+import { SignInIcon, UserIcon } from '../../styles/IconStyles';
 
 const PageHeader = () => {
     return (

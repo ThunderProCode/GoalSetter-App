@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
 
 export const Header = styled.header`
     width: 100%;
@@ -8,8 +7,9 @@ export const Header = styled.header`
     flex-direction:row;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #e6e6e6;;
-    margin-bottom: 24px;
+    border-bottom: 1px solid #e6e6e6;
+    position: absolute;
+    top: 0;
 `
 
 export const Logo = styled.div`
@@ -25,7 +25,11 @@ export const Ul = styled.ul`
     display: flex;
     flex-direction:row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: right;
+    li {
+        margin: 4px;
+    }
+
 `
 
 export const StyledLink = styled(Link)`
@@ -34,12 +38,4 @@ export const StyledLink = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: center;
-`
-export const SignInIcon = styled(FaSignInAlt)`
-    font-size: 14px;
-    margin-right: 4px;
-`
-export const UserIcon = styled(FaUser)`
-    font: 14px;
-    margin-right: 4px;
 `
