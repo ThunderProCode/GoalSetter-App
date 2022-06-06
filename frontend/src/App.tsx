@@ -1,15 +1,19 @@
 import React from "react";
 import { BrowserRouter, Routes , Route } from "react-router-dom";
 
-//Components
+// Components
 import PageHeader from "./components/Header/PageHeader";
 
-//Pages
+// Utils
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+// Pages
 import Dashboard from "./pages/DashBoard/DashBoard";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 
-//Styles
+// Styles
 import { GlobalStyles } from './styles/GlobalStyles';
 import { Container } from './styles/AppStyle';
 
@@ -26,6 +30,7 @@ const App = () => (
                 </Routes>
             </Container>
         </BrowserRouter>
+        <ToastContainer/>
     </>
 );
 

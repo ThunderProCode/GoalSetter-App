@@ -1,33 +1,74 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { RegisterForm } from '../../Types/RegisterTypes';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'
 import { Section, Form, RegisterButton, Wrapper } from './RegisterStyles';
 import { UserIcon } from '../../styles/IconStyles';
 import { Title, SubTitle } from '../../styles/AppStyle';
-
-const formInitialState:RegisterForm = {
-    name: '',
-    email: '',
-    password: '',
-    password2: ''
-}
+import { register, reset } from '../../features/auth/authSlice';
+import Spinner from '../../components/Spinner/Spinner';
 
 const Register = () => {
 
-    const [formData, setFormData] = useState<RegisterForm>(formInitialState);
-    const { name, email, password, password2 } = formData;
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        password2: '',
+    })
 
-    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const target = e.target as HTMLInputElement;
-        setFormData((prevState) =>({
-            ...prevState,
-            [target.name]: target.value,
-        }));
+    const { name, email, password, password2 } = formData
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const { user, isLoading, isError, isSuccess, message } = useSelector(
+        (state) => state.auth
+    )
+
+
+    useEffect(()=> {
+        if(isError){
+            toast.error(message)
+        }
+
+        if(isSuccess || user){
+            navigate('/')
+        }
+
+        dispatch(reset())
+
+    },[user,isError,isSuccess,message, navigate, dispatch])
+
+    const handleChange = (e) => {
+        setFormData((prevState) => ({
+          ...prevState,
+          [e.target.name]: e.target.value,
+        }))
+      }
+
+      const handleSubmit = (e) => {
+        e.preventDefault()
+    
+        if (password !== password2) {
+          toast.error('Passwords do not match')
+        } else {
+          const userData = {
+            name,
+            email,
+            password,
+          }
+    
+          dispatch(register(userData))
+        }
+      }
+
+
+    if(isLoading){
+        return <Spinner/>
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-    }
 
     return (
  

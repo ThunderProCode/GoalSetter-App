@@ -10,7 +10,7 @@ export const Container = styled.div`
 `
 
 export const Title = styled.h1`
-    font-size: 38px;
+    font-size: 32px;
     margin-bottom: 12px;
     svg{
         font-size: 30px;
@@ -18,7 +18,7 @@ export const Title = styled.h1`
 `
 
 export const SubTitle = styled.p`
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     color: #656669;
     margin-bottom: 0px;

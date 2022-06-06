@@ -39,3 +39,18 @@ export const StyledLink = styled(Link)`
     align-items: center;
     justify-content: center;
 `
+export const Button = styled.button`
+    background: black;
+    color:white;
+    padding: 6px;
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        margin-right: 4px;
+    }
+
+`
